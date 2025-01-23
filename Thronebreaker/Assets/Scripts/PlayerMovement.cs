@@ -4,35 +4,22 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     private float vertical;
+    
 
-    [SerializeField] private float speed;
-    [SerializeField] private float sprintMultiplier;
-    [SerializeField] private Rigidbody2D rb;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        rb.gravityScale = 0;
-    }
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float sprintMultiplier = 1.5f;
+    private Vector2 movementInput;
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
-    }
+        movementInput.x = Input.GetAxisRaw("Horizontal");
+        movementInput.y = Input.GetAxisRaw("Vertical");
 
-    private void Movement() {
-        vertical = Input.GetAxis("Vertical");
-        horizontal = Input.GetAxis("Horizontal");
+        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? speed * sprintMultiplier : speed;
 
-        if (Input.GetButton("Fire3")) 
-        {
-            rb.linearVelocity = new Vector2(horizontal * speed * sprintMultiplier, vertical * speed * sprintMultiplier);
-        }
-        else 
-        {
-            rb.linearVelocity = new Vector2(horizontal * speed, vertical * speed);
-        }
-       
+        movementInput = movementInput.normalized;
+
+        transform.position += (Vector3)movementInput * currentSpeed * Time.deltaTime;
     }
 }
