@@ -8,7 +8,7 @@ public class Title : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene(1);      // Loads the overworld scene for now
+        SceneManager.LoadScene(3);      // Loads the overworld scene for now
     }
 
     public void Quit()        // Ends the current playing session of the game
