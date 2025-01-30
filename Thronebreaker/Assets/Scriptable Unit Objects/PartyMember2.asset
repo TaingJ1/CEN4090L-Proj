@@ -15,7 +15,8 @@ MonoBehaviour:
   unitName: Bartholemew
   maxHealth: 64
   physAttack: 19
-  magicAttack: 0
+  maxMana: 18
+  magicAttack: 4
   defense: 32
   isPlayerUnit: 1
   actionTimerCountdown: 0

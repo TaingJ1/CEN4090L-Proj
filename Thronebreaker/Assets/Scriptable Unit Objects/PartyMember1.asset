@@ -15,7 +15,8 @@ MonoBehaviour:
   unitName: Peter
   maxHealth: 27
   physAttack: 10
-  magicAttack: 0
+  maxMana: 15
+  magicAttack: 24
   defense: 17
   isPlayerUnit: 1
   actionTimerCountdown: 0
