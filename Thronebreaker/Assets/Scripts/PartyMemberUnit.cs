@@ -19,7 +19,7 @@ public class PartyMemberUnit : MonoBehaviour
 
     public HealthBar healthBar;
     public ManaBar manaBar;
-    public PlayerSelectionMenu selectionMenu;
+    public GameObject selectionMenu;
 
     void Awake()                // Sets the unit's stats at beginning of battle
     {
@@ -44,6 +44,8 @@ public class PartyMemberUnit : MonoBehaviour
 
     public void DoTurn()
     {
+        selectionMenu.SetActive(true);
+        
         if (currentHealth == 0)
         {
             Debug.Log("Party Member died");

@@ -122,7 +122,7 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 5499233972355086105}
   manaBar: {fileID: 7570072614622742799}
-  selectionMenu: {fileID: 2663945208903211915}
+  selectionMenu: {fileID: 3131654290075554383}
 --- !u!1 &443951682666927098
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4166039689255605462
 Transform:
   m_ObjectHideFlags: 0
