@@ -19,7 +19,7 @@ public class PartyMemberUnit : MonoBehaviour
 
     public HealthBar healthBar;
     public ManaBar manaBar;
-    public GameObject selectionMenu;
+    public PlayerSelectionMenu selectionMenu;
 
     void Awake()                // Sets the unit's stats at beginning of battle
     {
@@ -44,19 +44,11 @@ public class PartyMemberUnit : MonoBehaviour
 
     public void DoTurn()
     {
-        selectionMenu.SetActive(true);
-        
-        if (currentHealth == 0)
-        {
-            Debug.Log("Party Member died");
-            //manager.enemyUnits.Remove(this);
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("Taking Damage");
-            takeDamage(3);
-        }
+        Debug.Log("DoTurn called.");
+        selectionMenu.gameObject.SetActive(true);
+        selectionMenu.SetCurrentUnit(this);
+        Debug.Log("Starting Select Action Coroutine");
+        selectionMenu.StartCoroutine(selectionMenu.SelectAction());
     }
 
     public void SetHealth()

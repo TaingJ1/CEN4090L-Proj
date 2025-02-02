@@ -145,9 +145,10 @@ public class BattleManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("ACTION CONFIRMED");
+                Debug.Log("Party Member Selected");
                 playerHasActed = true;
                 currentSelectedPartyMember.DoTurn();
+                Debug.Log("Action Finished");
             }
 
             yield return null;
