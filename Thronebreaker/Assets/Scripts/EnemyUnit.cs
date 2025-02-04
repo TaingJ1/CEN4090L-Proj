@@ -50,18 +50,27 @@ public class EnemyUnit : MonoBehaviour
     {
         if (currentHealth == 0)
         {
-            // Do attack
             Debug.Log("Enemy died");
             //manager.enemyUnits.Remove(this);
             Destroy(gameObject);
         }
         else
         {
-            currentHealth = currentHealth - 2;
-            healthBar.SetHealth(currentHealth);
+            TakeDamage(4);
             turnsUntilAttack--;
             timerText.text = turnsUntilAttack.ToString();
         }
+    }
+
+    public void SetHealth()
+    {
+        healthBar.SetHealth(currentHealth);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        SetHealth();
     }
 
     // More as time goes on

@@ -15,7 +15,8 @@ MonoBehaviour:
   unitName: E-N
   maxHealth: 120
   physAttack: 25
-  magicAttack: 0
+  maxMana: 24
+  magicAttack: 12
   defense: 17
   isPlayerUnit: 1
   actionTimerCountdown: 0

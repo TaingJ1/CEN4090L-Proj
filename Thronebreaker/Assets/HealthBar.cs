@@ -11,6 +11,7 @@ public class HealthBar : MonoBehaviour
     {
         slider.maxValue = health;
         slider.value = health;
+        Debug.Log($"Max health set to {health}");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

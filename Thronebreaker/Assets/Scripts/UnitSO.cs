@@ -8,7 +8,9 @@ using UnityEngine;
 public class UnitSO : ScriptableObject
 {
     public string unitName;
+    public int unitID;
     public int maxHealth;
+    public int maxMana;
     public int physAttack;
     public int magicAttack;
     public int defense;
