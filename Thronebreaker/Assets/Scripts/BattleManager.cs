@@ -31,6 +31,7 @@ public class BattleManager : MonoBehaviour
     public Button testEndTurnButton;
     public Button testHealButton;
     public PartyMemberUnit currentSelectedPartyMember;
+    public int currentActionIndex;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -146,9 +147,11 @@ public class BattleManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("Party Member Selected");
+                
                 playerHasActed = true;
-                currentSelectedPartyMember.DoTurn();
-                Debug.Log("Action Finished");
+                yield return StartCoroutine(currentSelectedPartyMember.DoTurn());
+
+                Debug.Log($"The current action index is: {currentActionIndex}");
             }
 
             yield return null;

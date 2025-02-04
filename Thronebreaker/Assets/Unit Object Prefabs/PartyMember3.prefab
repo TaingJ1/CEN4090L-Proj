@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 744806627103073846}
   - component: {fileID: 3348567751658297933}
   - component: {fileID: 2045623701930723126}
-  - component: {fileID: 2768460637840158148}
+  - component: {fileID: 6111718722923199957}
   m_Layer: 0
   m_Name: PartyMember3
   m_TagString: Untagged
@@ -575,7 +575,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2768460637840158148
+--- !u!114 &6111718722923199957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -584,10 +584,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2689289728952928398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8dc62562bc846648806f1d14b42a4a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 70839a28a977f5c4aa038c09c02db6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitData: {fileID: 11400000, guid: b8f932d62a9cbde45aa21e1d31fee022, type: 2}
+  unitData: {fileID: 0}
   currentHealth: 0
   physAttack: 0
   magicAttack: 0
@@ -1335,6 +1335,7 @@ MonoBehaviour:
   - {fileID: 2929592951348106623}
   selectionMenuMarker: {fileID: 2248825079885036847}
   currentlySelectedUnit: {fileID: 0}
+  battleManager: {fileID: 0}
 --- !u!1 &6499119549753753381
 GameObject:
   m_ObjectHideFlags: 0

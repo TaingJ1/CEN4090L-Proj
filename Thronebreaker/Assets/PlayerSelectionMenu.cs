@@ -9,10 +9,11 @@ public class PlayerSelectionMenu : MonoBehaviour
     public Transform[] optionsTransform;
     public GameObject selectionMenuMarker;
     [SerializeField] private PartyMemberUnit currentlySelectedUnit;
-    private BattleManager battleManager;
+    public BattleManager battleManager;
 
     public void Start()
     {
+        battleManager = FindObjectOfType<BattleManager>();
         selectionMenuMarker.transform.position = optionsTransform[0].position;
     }
 
@@ -70,7 +71,7 @@ public class PlayerSelectionMenu : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                Debug.Log($"ACTION CONFIRMED. Doing action #{selection}");
+                battleManager.currentActionIndex = selection;
                 playerHasSelected = true;
                 // Do action
             }
