@@ -13,28 +13,30 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
+        //sets the starting position to startPos
         startPos = new Vector3();
         startPos = transform.position;
-        print(startPos);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Moves the enemy towards the desired position
         var step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, turningPoint.position, step);
 
+        //checks if the enemy has reached the desired position
         if ((Vector3.Distance(transform.position, turningPoint.position) < 0.001f) && posCheck)
         {
-            print(startPos);
+            //makes enemy move back towards start position
             posCheck = false;
             Vector3 Temp = startPos;
             startPos = turningPoint.position;
             turningPoint.position = Temp;
-            print(turningPoint.position);
         }
         else if (Vector3.Distance(transform.position, turningPoint.position) > 0.001f)
         {
+            //prevents the enemy from continously moving back and forth when in range of the chekpoint
             posCheck = true;
         }
     }
