@@ -8,7 +8,7 @@ public class Title : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene(3);      // Loads the overworld scene for now
+        SceneManager.LoadScene("CutsceneTest");      // Loads the overworld scene for now
     }
 
     public void Quit()        // Ends the current playing session of the game
@@ -22,6 +22,6 @@ public class Title : MonoBehaviour
 
     public void Credits()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Credits");
     }
 }
