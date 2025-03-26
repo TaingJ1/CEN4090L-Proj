@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private static int patrolPointsNum;
     [SerializeField] private Transform[] turningPoint;
 
-    private static int curPos = 0;
+    private int curPos = 0;
     private int maxPos;
 
     [SerializeField] private float speed = 5f;
@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, turningPoint[curPos].position, step);
 
         //checks if the enemy has reached the next node
-        if ((Vector3.Distance(transform.position, turningPoint[curPos].position) < 0.001f) /*&& posCheck*/)
+        if ((Vector3.Distance(transform.position, turningPoint[curPos].position) < 0.001f))
         {
             /* Makes enemy move back towards next node in the array
              * If the enemy is at the last node, set curPos to the first node
