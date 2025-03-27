@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -6,9 +9,17 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float vertical;
     [SerializeField] private static int patrolPointsNum;
     [SerializeField] private Transform[] turningPoint;
+    public bool turnsRight;
+    public bool turnsLeft;
+    public bool backAndForth;
 
     private int curPos = 0;
     private int maxPos;
+
+    public float detectionRadius = 3f;
+    public float detectionAngle = 60f;
+    // public PolygonCollider2D visionCone;
+    public BoxCollider2D visionBox;
 
     [SerializeField] private float speed = 5f;
 
@@ -18,27 +29,81 @@ public class EnemyMovement : MonoBehaviour
         maxPos = turningPoint.Length - 1;
     }
 
+    void Start()
+    {
+        if (visionBox != null)
+        {
+            visionBox.isTrigger = true;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        //Moves the enemy towards the desired node
-        var step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, turningPoint[curPos].position, step);
+        Patrol();
+    }
+
+    /*public void UpdateVisionCone()
+    {
+        if (visionCone == null) return;
+
+        visionCone.pathCount = 1;
+
+        int numVertices = 6;
+        List<Vector2> points = new List<Vector2> {Vector2.zero};
+
+        float halfAngle = detectionAngle / 2f;
+
+        // Get forward direction
+        Vector2 forward = transform.right;
+
+        // Generate the cone shape
+        for (int i = 0; i <= numVertices; i++)
+        {
+            float angle = -halfAngle + i / (float)numVertices * detectionAngle;
+            Vector2 direction = Quaternion.Euler(0, 0, angle) * forward;
+            points.Add(direction * detectionRadius);
+        }
+
+        visionCone.SetPath(0, points.ToArray());
+    }*/
+
+    public void Patrol()
+    {
+
+        Transform targetPoint = turningPoint[curPos];
+
+        // Moves the enemy towards the desired node
+        transform.position = Vector3.MoveTowards(transform.position, turningPoint[curPos].position, speed * Time.deltaTime);
 
         //checks if the enemy has reached the next node
-        if ((Vector3.Distance(transform.position, turningPoint[curPos].position) < 0.001f))
+        if (Vector2.Distance(transform.position, turningPoint[curPos].position) < 0.001f)
         {
-            /* Makes enemy move back towards next node in the array
-             * If the enemy is at the last node, set curPos to the first node
-             */
-            if (curPos == maxPos)
-            {
+            curPos++;
+            if (curPos >= turningPoint.Length)
                 curPos = 0;
-            }
-            else
+
+            if (turnsLeft)
             {
-                curPos++;
+                transform.Rotate(0, 0, 90);
             }
+            else if (turnsRight)
+            {
+                transform.Rotate(0, 0, -90);
+            }
+            if (backAndForth)
+            {
+                transform.Rotate(0, 0, 180);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Sending to battle scene");
+            SceneManager.LoadScene(3);
         }
     }
 }
